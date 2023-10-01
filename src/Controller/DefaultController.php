@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-
     public function __construct(
         private BookRepository $bookRepository,
         private EntityManagerInterface $entityManager
@@ -34,8 +33,9 @@ class DefaultController extends AbstractController
     public function root(): Response
     {
         $books = $this->bookRepository->findAll();
+
         return $this->json([
-            'books' => $books
+            'books' => $books,
         ]);
     }
 }
